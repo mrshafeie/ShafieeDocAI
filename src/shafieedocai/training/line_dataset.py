@@ -12,7 +12,9 @@ from PIL import Image
 
 
 class PersianLineDataset(torch.utils.data.Dataset):
-    """Read verified text annotations and return image crops with labels."""
+    """Load verified printed or mixed text annotations as image tensors."""
+
+    VALID_SPLITS = {"train", "validation", "test"}
 
     def __init__(
         self,
@@ -22,11 +24,13 @@ class PersianLineDataset(torch.utils.data.Dataset):
         max_width: int = 512,
         padding: int = 2,
     ) -> None:
-        if split not in {"train", "validation", "test"}:
+        if split not in self.VALID_SPLITS:
             raise ValueError(f"Unsupported split: {split}")
 
         if image_height < 1 or max_width < 1 or padding < 0:
-            raise ValueError("Image dimensions must be positive and padding non-negative.")
+            raise ValueError(
+                "Image dimensions must be positive and padding non-negative."
+            )
 
         self.dataset_path = Path(dataset_path).resolve()
         self.image_height = image_height
@@ -35,7 +39,11 @@ class PersianLineDataset(torch.utils.data.Dataset):
         self.samples: list[dict[str, Any]] = []
 
         if not self.dataset_path.is_file():
-            raise FileNotFoundError(f"Dataset not found: {self.dataset_path}")
+            raise FileNotFoundError(
+                f"Dataset not found: {self.dataset_path}"
+            )
+
+        dataset_root = self.dataset_path.parent
 
         with self.dataset_path.open("r", encoding="utf-8-sig") as stream:
             for line_number, raw_line in enumerate(stream, start=1):
@@ -57,26 +65,47 @@ class PersianLineDataset(torch.utils.data.Dataset):
                 if record.get("split") != split:
                     continue
 
-                image_info = record.get("image", {})
-                image_relative = image_info.get("path")
+                image_info = record.get("image")
+                if not isinstance(image_info, dict):
+                    raise ValueError(
+                        f"Invalid image metadata at line {line_number}."
+                    )
 
+                image_relative = image_info.get("path")
                 if not isinstance(image_relative, str) or not image_relative:
                     raise ValueError(
                         f"Missing image path at line {line_number}."
                     )
 
-                image_path = (self.dataset_path.parent / image_relative).resolve()
+                image_path = (dataset_root / image_relative).resolve()
 
-                if not image_path.is_relative_to(self.dataset_path.parent):
+                if not image_path.is_relative_to(dataset_root):
                     raise ValueError(
-                        f"Image path escapes dataset directory at line {line_number}."
+                        f"Image path escapes dataset directory at line "
+                        f"{line_number}."
                     )
 
                 if not image_path.is_file():
-                    raise FileNotFoundError(f"Image not found: {image_path}")
+                    raise FileNotFoundError(
+                        f"Image not found at line {line_number}: {image_path}"
+                    )
+
+                width = image_info.get("width")
+                height = image_info.get("height")
+
+                if (
+                    isinstance(width, bool)
+                    or not isinstance(width, int)
+                    or isinstance(height, bool)
+                    or not isinstance(height, int)
+                    or width < 1
+                    or height < 1
+                ):
+                    raise ValueError(
+                        f"Invalid image dimensions at line {line_number}."
+                    )
 
                 annotations = record.get("text_annotations", [])
-
                 if not isinstance(annotations, list):
                     raise ValueError(
                         f"text_annotations must be a list at line {line_number}."
@@ -104,32 +133,31 @@ class PersianLineDataset(torch.utils.data.Dataset):
                         not isinstance(bbox, list)
                         or len(bbox) != 4
                         or any(
-                            isinstance(value, bool) or not isinstance(value, int)
+                            isinstance(value, bool)
+                            or not isinstance(value, int)
                             for value in bbox
                         )
                     ):
                         raise ValueError(
-                            f"Invalid bounding box in {record.get('document_id')}."
+                            f"Invalid bounding box in "
+                            f"{record.get('document_id', 'unknown document')}."
                         )
 
                     x1, y1, x2, y2 = bbox
-                    width = image_info.get("width")
-                    height = image_info.get("height")
-
-                    if (
-                        not isinstance(width, int)
-                        or not isinstance(height, int)
-                        or not (0 <= x1 < x2 <= width)
-                        or not (0 <= y1 < y2 <= height)
+                    if not (
+                        0 <= x1 < x2 <= width
+                        and 0 <= y1 < y2 <= height
                     ):
                         raise ValueError(
                             f"Bounding box outside image in "
-                            f"{record.get('document_id')}."
+                            f"{record.get('document_id', 'unknown document')}."
                         )
 
                     self.samples.append(
                         {
                             "image_path": image_path,
+                            "image_width": width,
+                            "image_height": height,
                             "bbox": bbox,
                             "text": text,
                             "document_id": record.get("document_id", ""),
@@ -146,25 +174,46 @@ class PersianLineDataset(torch.utils.data.Dataset):
 
         with Image.open(sample["image_path"]) as source:
             image = source.convert("L")
+
+            if image.size != (
+                sample["image_width"],
+                sample["image_height"],
+            ):
+                raise ValueError(
+                    f"Image dimensions do not match annotations for "
+                    f"{sample['document_id']}."
+                )
+
             left = max(0, x1 - self.padding)
             top = max(0, y1 - self.padding)
             right = min(image.width, x2 + self.padding)
             bottom = min(image.height, y2 + self.padding)
             crop = image.crop((left, top, right, bottom))
 
-        target_width = max(
-            1,
-            round(crop.width * self.image_height / crop.height),
+        # Preserve the text aspect ratio, including for unusually long lines.
+        scale = min(
+            self.image_height / crop.height,
+            self.max_width / crop.width,
         )
-        target_width = min(target_width, self.max_width)
+        target_width = max(1, min(self.max_width, round(crop.width * scale)))
+        target_height = max(1, min(self.image_height, round(crop.height * scale)))
 
-        crop = crop.resize(
-            (target_width, self.image_height),
+        resized = crop.resize(
+            (target_width, target_height),
             Image.Resampling.BILINEAR,
         )
 
+        # White background; center vertically without stretching the text.
+        canvas = Image.new(
+            "L",
+            (target_width, self.image_height),
+            color=255,
+        )
+        top_padding = (self.image_height - target_height) // 2
+        canvas.paste(resized, (0, top_padding))
+
         pixels = torch.frombuffer(
-            bytearray(crop.tobytes()),
+            bytearray(canvas.tobytes()),
             dtype=torch.uint8,
         ).reshape(1, self.image_height, target_width)
 
