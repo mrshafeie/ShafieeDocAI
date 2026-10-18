@@ -1,5 +1,4 @@
-
-"""CPU-friendly CNN + BiLSTM model for Persian line OCR."""
+"""CNN + BiLSTM model for Persian line OCR."""
 
 from __future__ import annotations
 
@@ -8,14 +7,15 @@ from torch import nn
 
 
 class PersianOCRModel(nn.Module):
-    """Recognize Persian character sequences from grayscale line images.
+    """Recognize text from grayscale images of individual text lines.
 
-    Input shape: [batch, 1, 32, width]
-    Output shape: [batch, time, num_classes]
+    Input:
+        [batch, 1, 32, width]
+
+    Output:
+        [batch, time, num_classes]
 
     Class zero is reserved for the CTC blank token.
-    The visual feature sequence is reversed to align right-to-left
-    Persian reading order with Unicode logical text order.
     """
 
     def __init__(
@@ -32,7 +32,9 @@ class PersianOCRModel(nn.Module):
             )
 
         if hidden_size < 1 or lstm_layers < 1:
-            raise ValueError("hidden_size and lstm_layers must be positive.")
+            raise ValueError(
+                "hidden_size and lstm_layers must be positive."
+            )
 
         self.num_classes = num_classes
 
@@ -40,14 +42,20 @@ class PersianOCRModel(nn.Module):
             nn.Conv2d(1, 32, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
+
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
+
             nn.Conv2d(64, 128, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
         )
 
-        self.feature_projection = nn.Linear(128 * 8, hidden_size)
+        # Input height is 32; two pooling layers reduce it to 8.
+        self.feature_projection = nn.Linear(
+            128 * 8,
+            hidden_size,
+        )
 
         self.sequence_model = nn.LSTM(
             input_size=hidden_size,
@@ -58,29 +66,48 @@ class PersianOCRModel(nn.Module):
             dropout=0.1 if lstm_layers > 1 else 0.0,
         )
 
-        self.classifier = nn.Linear(hidden_size * 2, num_classes)
+        self.classifier = nn.Linear(
+            hidden_size * 2,
+            num_classes,
+        )
 
     def forward(self, images: torch.Tensor) -> torch.Tensor:
         if images.ndim != 4:
             raise ValueError(
-                "Expected images shaped [batch, 1, height, width]."
+                "Expected input shaped [batch, 1, height, width]."
             )
 
         if images.shape[1] != 1:
-            raise ValueError("OCR input images must have one grayscale channel.")
+            raise ValueError(
+                "OCR input must have one grayscale channel."
+            )
 
         if images.shape[2] != 32:
-            raise ValueError("OCR input height must be 32 pixels.")
+            raise ValueError(
+                "OCR input height must be 32 pixels."
+            )
+
+        if images.shape[3] < 4:
+            raise ValueError(
+                "OCR input width must be at least 4 pixels."
+            )
 
         features = self.cnn(images)
 
         # [B, C, H, W] -> [B, W, C * H]
         batch_size, channels, height, width = features.shape
-        features = features.permute(0, 3, 1, 2).contiguous()
-        features = features.reshape(batch_size, width, channels * height)
 
-        # Read the visual sequence from right to left for Persian text.
-        features = torch.flip(features, dims=[1])
+        features = features.permute(0, 3, 1, 2).contiguous()
+        features = features.reshape(
+            batch_size,
+            width,
+            channels * height,
+        )
+
+        # The first logical character in Persian text normally appears
+        # on the right side of the line image.
+        # Reverse image features, NOT the target text string.
+        features = features.flip(dims=[1])
 
         features = self.feature_projection(features)
         features, _ = self.sequence_model(features)
@@ -89,15 +116,14 @@ class PersianOCRModel(nn.Module):
 
     @staticmethod
     def input_lengths(images: torch.Tensor) -> torch.Tensor:
-        """Calculate output sequence lengths after CNN pooling."""
+        """Return sequence lengths after the two 2x pooling layers."""
         if images.ndim != 4:
-            raise ValueError("Expected a four-dimensional image batch.")
+            raise ValueError(
+                "Expected a four-dimensional image batch."
+            )
 
-        lengths = images.shape[3] // 4
-
-        return torch.full(
-            (images.shape[0],),
-            lengths,
-            dtype=torch.long,
-            device=images.device,
-        )
+        return torch.div(
+            images.shape[3],
+            4,
+            rounding_mode="floor",
+        ).to(dtype=torch.long)
