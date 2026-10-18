@@ -221,8 +221,8 @@ def make_receipt(
 
     document_number = f"WH-{index:06d}"
     document_date = (
-        f"۱۴۰۵/{fa_number(rng.randint(1, 12)).zfill(2)}/"
-        f"{fa_number(rng.randint(1, 28)).zfill(2)}"
+        f"۱۴۰۵/{fa_number(rng.randint(1, 12)).rjust(2, '۰')}/"
+        f"{fa_number(rng.randint(1, 28)).rjust(2, '۰')}"
     )
 
     seller = rng.choice(SELLERS)
@@ -231,8 +231,8 @@ def make_receipt(
     buyer_address = rng.choice(BUYER_ADDRESSES)
 
     # Synthetic contact numbers; never copied from the real sample.
-    seller_phone = f"۰۹۱۲{rng.randint(1000000, 9999999)}"
-    buyer_phone = f"۰۹۳۵{rng.randint(1000000, 9999999)}"
+    seller_phone = f"۰۹۱۲{fa_number(rng.randint(1000000, 9999999))}"
+    buyer_phone = f"۰۹۳۵{fa_number(rng.randint(1000000, 9999999))}"
 
     field_annotations: dict[str, str] = {}
 
