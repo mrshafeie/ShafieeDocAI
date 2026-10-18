@@ -1,3 +1,4 @@
+
 """CPU-friendly CNN + BiLSTM model for Persian line OCR."""
 
 from __future__ import annotations
@@ -7,15 +8,14 @@ from torch import nn
 
 
 class PersianOCRModel(nn.Module):
-    """Recognize character sequences from grayscale line images.
+    """Recognize Persian character sequences from grayscale line images.
 
-    Input:
-        Tensor shaped [batch, 1, height, width].
-
-    Output:
-        Logits shaped [batch, time, num_classes].
+    Input shape: [batch, 1, 32, width]
+    Output shape: [batch, time, num_classes]
 
     Class zero is reserved for the CTC blank token.
+    The visual feature sequence is reversed to align right-to-left
+    Persian reading order with Unicode logical text order.
     """
 
     def __init__(
@@ -27,7 +27,9 @@ class PersianOCRModel(nn.Module):
         super().__init__()
 
         if num_classes < 2:
-            raise ValueError("num_classes must include blank and at least one character.")
+            raise ValueError(
+                "num_classes must include blank and at least one character."
+            )
 
         if hidden_size < 1 or lstm_layers < 1:
             raise ValueError("hidden_size and lstm_layers must be positive.")
@@ -38,11 +40,9 @@ class PersianOCRModel(nn.Module):
             nn.Conv2d(1, 32, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
-
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
-
             nn.Conv2d(64, 128, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
         )
@@ -58,10 +58,7 @@ class PersianOCRModel(nn.Module):
             dropout=0.1 if lstm_layers > 1 else 0.0,
         )
 
-        self.classifier = nn.Linear(
-            hidden_size * 2,
-            num_classes,
-        )
+        self.classifier = nn.Linear(hidden_size * 2, num_classes)
 
     def forward(self, images: torch.Tensor) -> torch.Tensor:
         if images.ndim != 4:
@@ -80,17 +77,15 @@ class PersianOCRModel(nn.Module):
         # [B, C, H, W] -> [B, W, C * H]
         batch_size, channels, height, width = features.shape
         features = features.permute(0, 3, 1, 2).contiguous()
-        features = features.reshape(
-            batch_size,
-            width,
-            channels * height,
-        )
+        features = features.reshape(batch_size, width, channels * height)
+
+        # Read the visual sequence from right to left for Persian text.
+        features = torch.flip(features, dims=[1])
 
         features = self.feature_projection(features)
         features, _ = self.sequence_model(features)
-        logits = self.classifier(features)
 
-        return logits
+        return self.classifier(features)
 
     @staticmethod
     def input_lengths(images: torch.Tensor) -> torch.Tensor:
@@ -98,7 +93,6 @@ class PersianOCRModel(nn.Module):
         if images.ndim != 4:
             raise ValueError("Expected a four-dimensional image batch.")
 
-        # Two width-wise 2x pooling operations.
         lengths = images.shape[3] // 4
 
         return torch.full(
