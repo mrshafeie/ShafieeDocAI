@@ -1,4 +1,4 @@
-﻿"""Neural network model for Persian OCR line recognition."""
+"""Neural network model for Persian OCR line recognition."""
 
 import torch
 from torch import nn
@@ -11,7 +11,7 @@ class PersianOCRModel(nn.Module):
         self,
         num_classes: int,
         hidden_size: int = 128,
-        num_lstm_layers: int = 2,
+        lstm_layers: int = 2,
     ) -> None:
         super().__init__()
 
@@ -36,10 +36,10 @@ class PersianOCRModel(nn.Module):
         self.lstm = nn.LSTM(
             input_size=hidden_size,
             hidden_size=hidden_size,
-            num_layers=num_lstm_layers,
+            num_layers=lstm_layers,
             batch_first=True,
             bidirectional=True,
-            dropout=0.1 if num_lstm_layers > 1 else 0.0,
+            dropout=0.1 if lstm_layers > 1 else 0.0,
         )
 
         self.classifier = nn.Linear(hidden_size * 2, num_classes)
