@@ -1,40 +1,22 @@
-"""CNN + BiLSTM model for Persian line OCR."""
-
-from __future__ import annotations
+﻿"""Neural network model for Persian OCR line recognition."""
 
 import torch
 from torch import nn
 
 
 class PersianOCRModel(nn.Module):
-    """Recognize text from grayscale images of individual text lines.
-
-    Input:
-        [batch, 1, 32, width]
-
-    Output:
-        [batch, time, num_classes]
-
-    Class zero is reserved for the CTC blank token.
-    """
+    """CNN + BiLSTM model for recognizing text in line images."""
 
     def __init__(
         self,
         num_classes: int,
         hidden_size: int = 128,
-        lstm_layers: int = 2,
+        num_lstm_layers: int = 2,
     ) -> None:
         super().__init__()
 
         if num_classes < 2:
-            raise ValueError(
-                "num_classes must include blank and at least one character."
-            )
-
-        if hidden_size < 1 or lstm_layers < 1:
-            raise ValueError(
-                "hidden_size and lstm_layers must be positive."
-            )
+            raise ValueError("num_classes must be at least 2.")
 
         self.num_classes = num_classes
 
@@ -42,88 +24,61 @@ class PersianOCRModel(nn.Module):
             nn.Conv2d(1, 32, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
-
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
-
             nn.Conv2d(64, 128, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
         )
 
-        # Input height is 32; two pooling layers reduce it to 8.
-        self.feature_projection = nn.Linear(
-            128 * 8,
-            hidden_size,
-        )
+        self.projection = nn.Linear(128 * 8, hidden_size)
 
-        self.sequence_model = nn.LSTM(
+        self.lstm = nn.LSTM(
             input_size=hidden_size,
             hidden_size=hidden_size,
-            num_layers=lstm_layers,
+            num_layers=num_lstm_layers,
             batch_first=True,
             bidirectional=True,
-            dropout=0.1 if lstm_layers > 1 else 0.0,
+            dropout=0.1 if num_lstm_layers > 1 else 0.0,
         )
 
-        self.classifier = nn.Linear(
-            hidden_size * 2,
-            num_classes,
-        )
+        self.classifier = nn.Linear(hidden_size * 2, num_classes)
 
     def forward(self, images: torch.Tensor) -> torch.Tensor:
+        """Return log probabilities with shape [B, T, C]."""
         if images.ndim != 4:
-            raise ValueError(
-                "Expected input shaped [batch, 1, height, width]."
-            )
+            raise ValueError("Expected images with shape [B, 1, 32, W].")
 
-        if images.shape[1] != 1:
-            raise ValueError(
-                "OCR input must have one grayscale channel."
-            )
-
-        if images.shape[2] != 32:
-            raise ValueError(
-                "OCR input height must be 32 pixels."
-            )
-
-        if images.shape[3] < 4:
-            raise ValueError(
-                "OCR input width must be at least 4 pixels."
-            )
+        if images.shape[1] != 1 or images.shape[2] != 32:
+            raise ValueError("Expected images with shape [B, 1, 32, W].")
 
         features = self.cnn(images)
 
-        # [B, C, H, W] -> [B, W, C * H]
         batch_size, channels, height, width = features.shape
 
         features = features.permute(0, 3, 1, 2).contiguous()
-        features = features.reshape(
-            batch_size,
-            width,
-            channels * height,
-        )
+        features = features.reshape(batch_size, width, channels * height)
 
-        # The first logical character in Persian text normally appears
-        # on the right side of the line image.
-        # Reverse image features, NOT the target text string.
+        # Reverse the visual sequence for Persian right-to-left text.
         features = features.flip(dims=[1])
 
-        features = self.feature_projection(features)
-        features, _ = self.sequence_model(features)
+        features = self.projection(features)
+        features, _ = self.lstm(features)
+        logits = self.classifier(features)
 
-        return self.classifier(features)
+        return logits.log_softmax(dim=2)
 
     @staticmethod
     def input_lengths(images: torch.Tensor) -> torch.Tensor:
-        """Return sequence lengths after the two 2x pooling layers."""
+        """Return the CTC sequence length for each image in the batch."""
         if images.ndim != 4:
-            raise ValueError(
-                "Expected a four-dimensional image batch."
-            )
+            raise ValueError("Expected a four-dimensional image batch.")
 
-        return torch.div(
-            images.shape[3],
-            4,
-            rounding_mode="floor",
-        ).to(dtype=torch.long)
+        sequence_length = images.shape[3] // 4
+
+        return torch.full(
+            (images.shape[0],),
+            sequence_length,
+            dtype=torch.long,
+            device=images.device,
+        )
