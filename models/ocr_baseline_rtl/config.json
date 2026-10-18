@@ -1,0 +1,11 @@
+{
+  "image_height": 32,
+  "max_width": 512,
+  "hidden_size": 128,
+  "lstm_layers": 2,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "sequence_direction": "right_to_left",
+  "normalization": "NFC + Persian yeh/kaf"
+}

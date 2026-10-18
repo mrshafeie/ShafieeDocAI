@@ -1,0 +1,2 @@
+epoch,train_loss,validation_loss,cer,wer
+1,3.320759,3.048936,0.948656,1.000000
