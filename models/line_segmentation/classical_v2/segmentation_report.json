@@ -1,0 +1,13 @@
+{
+  "image_width": 960,
+  "image_height": 1280,
+  "detected_lines": 1,
+  "lines": [
+    {
+      "index": 1,
+      "start_y": 0,
+      "end_y": 1280,
+      "height": 1280
+    }
+  ]
+}

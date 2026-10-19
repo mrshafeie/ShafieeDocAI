@@ -1,6 +1,6 @@
 {
   "checkpoint": "F:\\mohsenproject\\ShafieeDocAI\\models\\ocr_baseline_rtl_continue\\best.pt",
-  "checkpoint_epoch": 10,
+  "checkpoint_epoch": 15,
   "results": {
     "train": {
       "available_lines": 1105,
@@ -20,25 +20,25 @@
           ],
           "image_width": 364,
           "reference": "جمع کالاها: ۱۸,۶۷۰,۰۰۰ تومان",
-          "prediction": "فایتارا تر:۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 91,
-          "blank_fraction": 0.8571,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8352,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 78
+              "time_steps": 76
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 6
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -56,13 +56,13 @@
               "time_steps": 1
             },
             {
-              "id": 1,
-              "character": " ",
+              "id": 16,
+              "character": ":",
               "time_steps": 1
             },
             {
-              "id": 16,
-              "character": ":",
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -81,30 +81,25 @@
           ],
           "image_width": 432,
           "reference": "فلش مموری | ۵ | ۶۵۰,۰۰۰ | ۳,۲۵۰,۰۰۰",
-          "prediction": "فایتارا تر:  ۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 108,
-          "blank_fraction": 0.8611,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8426,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 93
-            },
-            {
-              "id": 22,
-              "character": "ا",
-              "time_steps": 4
+              "time_steps": 91
             },
             {
               "id": 1,
               "character": " ",
-              "time_steps": 3
+              "time_steps": 8
             },
             {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "id": 22,
+              "character": "ا",
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -124,6 +119,11 @@
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -142,25 +142,25 @@
           ],
           "image_width": 352,
           "reference": "جمع کالاها: ۳۲,۸۰۰,۰۰۰ تومان",
-          "prediction": "فایتارا تر:۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 88,
-          "blank_fraction": 0.8523,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8295,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 75
+              "time_steps": 73
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 6
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -178,13 +178,13 @@
               "time_steps": 1
             },
             {
-              "id": 1,
-              "character": " ",
+              "id": 16,
+              "character": ":",
               "time_steps": 1
             },
             {
-              "id": 16,
-              "character": ":",
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -203,25 +203,25 @@
           ],
           "image_width": 376,
           "reference": "شارژر | ۱ | ۹۵۰,۰۰۰ | ۹۵۰,۰۰۰",
-          "prediction": "فایتارا تر:۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 94,
-          "blank_fraction": 0.8617,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8404,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 81
+              "time_steps": 79
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 6
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -239,13 +239,13 @@
               "time_steps": 1
             },
             {
-              "id": 1,
-              "character": " ",
+              "id": 16,
+              "character": ":",
               "time_steps": 1
             },
             {
-              "id": 16,
-              "character": ":",
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -264,25 +264,25 @@
           ],
           "image_width": 304,
           "reference": "مالیات: ۱,۵۳۰,۰۰۰ تومان",
-          "prediction": "فایتارا تر:۰",
+          "prediction": "فاک را ر:  ۰",
           "input_length": 76,
-          "blank_fraction": 0.8289,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8158,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 63
+              "time_steps": 62
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 5
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -295,18 +295,18 @@
               "time_steps": 1
             },
             {
-              "id": 50,
-              "character": "ی",
-              "time_steps": 1
-            },
-            {
-              "id": 1,
-              "character": " ",
+              "id": 48,
+              "character": "ک",
               "time_steps": 1
             },
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -325,30 +325,25 @@
           ],
           "image_width": 440,
           "reference": "صفحه کلید | ۲ | ۸۵۰,۰۰۰ | ۱,۷۰۰,۰۰۰",
-          "prediction": "فایتارا تر:  ۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 110,
-          "blank_fraction": 0.8636,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8455,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 95
-            },
-            {
-              "id": 22,
-              "character": "ا",
-              "time_steps": 4
+              "time_steps": 93
             },
             {
               "id": 1,
               "character": " ",
-              "time_steps": 3
+              "time_steps": 8
             },
             {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "id": 22,
+              "character": "ا",
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -368,6 +363,11 @@
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -386,34 +386,29 @@
           ],
           "image_width": 408,
           "reference": "شرح کالا | تعداد | قیمت واحد | مبلغ",
-          "prediction": "فایتارا تر: ۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 102,
-          "blank_fraction": 0.8627,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8431,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 88
-            },
-            {
-              "id": 22,
-              "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
-            },
-            {
-              "id": 30,
-              "character": "ر",
-              "time_steps": 2
+              "time_steps": 86
             },
             {
               "id": 1,
               "character": " ",
+              "time_steps": 7
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 3
+            },
+            {
+              "id": 30,
+              "character": "ر",
               "time_steps": 2
             },
             {
@@ -429,6 +424,11 @@
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -447,25 +447,25 @@
           ],
           "image_width": 300,
           "reference": "تاریخ فاکتور: ۱۴۰۵/۰۲/۲۵",
-          "prediction": "فایتارا تر:۰",
+          "prediction": "فاک را ر:  ۰",
           "input_length": 75,
-          "blank_fraction": 0.8267,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8133,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 62
+              "time_steps": 61
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 5
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -478,18 +478,18 @@
               "time_steps": 1
             },
             {
-              "id": 50,
-              "character": "ی",
-              "time_steps": 1
-            },
-            {
-              "id": 1,
-              "character": " ",
+              "id": 48,
+              "character": "ک",
               "time_steps": 1
             },
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -514,25 +514,25 @@
           ],
           "image_width": 276,
           "reference": "مالیات: ۱,۷۰۷,۰۰۰ تومان",
-          "prediction": "فایتارا تر: ۰",
+          "prediction": "فاکتارا ر:  ما۰",
           "input_length": 69,
-          "blank_fraction": 0.7971,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.7246,
+          "unique_raw_classes": 10,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 55
+              "time_steps": 50
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
+              "time_steps": 6
             },
             {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "id": 1,
+              "character": " ",
+              "time_steps": 4
             },
             {
               "id": 30,
@@ -540,8 +540,8 @@
               "time_steps": 2
             },
             {
-              "id": 1,
-              "character": " ",
+              "id": 41,
+              "character": "م",
               "time_steps": 2
             },
             {
@@ -550,13 +550,13 @@
               "time_steps": 1
             },
             {
-              "id": 50,
-              "character": "ی",
+              "id": 48,
+              "character": "ک",
               "time_steps": 1
             },
             {
-              "id": 16,
-              "character": ":",
+              "id": 24,
+              "character": "ت",
               "time_steps": 1
             }
           ]
@@ -575,34 +575,29 @@
           ],
           "image_width": 408,
           "reference": "شرح کالا | تعداد | قیمت واحد | مبلغ",
-          "prediction": "فایتارا تر: ۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 102,
-          "blank_fraction": 0.8627,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8431,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 88
-            },
-            {
-              "id": 22,
-              "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
-            },
-            {
-              "id": 30,
-              "character": "ر",
-              "time_steps": 2
+              "time_steps": 86
             },
             {
               "id": 1,
               "character": " ",
+              "time_steps": 7
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 3
+            },
+            {
+              "id": 30,
+              "character": "ر",
               "time_steps": 2
             },
             {
@@ -618,6 +613,11 @@
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -636,25 +636,25 @@
           ],
           "image_width": 304,
           "reference": "فروشنده: فروشگاه رایانه پارس",
-          "prediction": "فایتارا تر:۰",
+          "prediction": "فاک را ر:  ۰",
           "input_length": 76,
-          "blank_fraction": 0.8289,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8158,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 63
+              "time_steps": 62
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 5
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -667,18 +667,18 @@
               "time_steps": 1
             },
             {
-              "id": 50,
-              "character": "ی",
-              "time_steps": 1
-            },
-            {
-              "id": 1,
-              "character": " ",
+              "id": 48,
+              "character": "ک",
               "time_steps": 1
             },
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -697,30 +697,25 @@
           ],
           "image_width": 440,
           "reference": "صفحه کلید | ۲ | ۸۵۰,۰۰۰ | ۱,۷۰۰,۰۰۰",
-          "prediction": "فایتارا تر:  ۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 110,
-          "blank_fraction": 0.8636,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8455,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 95
-            },
-            {
-              "id": 22,
-              "character": "ا",
-              "time_steps": 4
+              "time_steps": 93
             },
             {
               "id": 1,
               "character": " ",
-              "time_steps": 3
+              "time_steps": 8
             },
             {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "id": 22,
+              "character": "ا",
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -740,6 +735,11 @@
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -758,20 +758,15 @@
           ],
           "image_width": 220,
           "reference": "خریدار: بازرگانی نمونه",
-          "prediction": "فایتارا تر:۰۰۰",
+          "prediction": "فاکتارا فر: ۰۰",
           "input_length": 55,
-          "blank_fraction": 0.6909,
+          "blank_fraction": 0.7273,
           "unique_raw_classes": 9,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 38
-            },
-            {
-              "id": 51,
-              "character": "۰",
-              "time_steps": 5
+              "time_steps": 40
             },
             {
               "id": 22,
@@ -779,8 +774,8 @@
               "time_steps": 4
             },
             {
-              "id": 24,
-              "character": "ت",
+              "id": 38,
+              "character": "ف",
               "time_steps": 2
             },
             {
@@ -789,18 +784,23 @@
               "time_steps": 2
             },
             {
-              "id": 38,
-              "character": "ف",
-              "time_steps": 1
-            },
-            {
-              "id": 50,
-              "character": "ی",
-              "time_steps": 1
-            },
-            {
               "id": 1,
               "character": " ",
+              "time_steps": 2
+            },
+            {
+              "id": 51,
+              "character": "۰",
+              "time_steps": 2
+            },
+            {
+              "id": 48,
+              "character": "ک",
+              "time_steps": 1
+            },
+            {
+              "id": 24,
+              "character": "ت",
               "time_steps": 1
             }
           ]
@@ -819,34 +819,29 @@
           ],
           "image_width": 400,
           "reference": "شارژر | ۴ | ۹۵۰,۰۰۰ | ۳,۸۰۰,۰۰۰",
-          "prediction": "فایتارا تر: ۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 100,
-          "blank_fraction": 0.86,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.85,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 86
-            },
-            {
-              "id": 22,
-              "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
-            },
-            {
-              "id": 30,
-              "character": "ر",
-              "time_steps": 2
+              "time_steps": 85
             },
             {
               "id": 1,
               "character": " ",
+              "time_steps": 6
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 3
+            },
+            {
+              "id": 30,
+              "character": "ر",
               "time_steps": 2
             },
             {
@@ -862,6 +857,11 @@
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -880,25 +880,25 @@
           ],
           "image_width": 344,
           "reference": "مبلغ نهایی: ۴,۶۷۵,۰۰۰ تومان",
-          "prediction": "فایتارا تر:۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 86,
-          "blank_fraction": 0.8488,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8256,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 73
+              "time_steps": 71
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 6
             },
             {
               "id": 22,
               "character": "ا",
-              "time_steps": 4
-            },
-            {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -916,13 +916,13 @@
               "time_steps": 1
             },
             {
-              "id": 1,
-              "character": " ",
+              "id": 16,
+              "character": ":",
               "time_steps": 1
             },
             {
-              "id": 16,
-              "character": ":",
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
@@ -941,30 +941,25 @@
           ],
           "image_width": 416,
           "reference": "موس رایانه | ۱ | ۴۲۰,۰۰۰ | ۴۲۰,۰۰۰",
-          "prediction": "فایتارا تر:  ۰",
+          "prediction": "فای را ر:  ۰",
           "input_length": 104,
-          "blank_fraction": 0.8558,
-          "unique_raw_classes": 9,
+          "blank_fraction": 0.8462,
+          "unique_raw_classes": 8,
           "top_raw_classes": [
             {
               "id": 0,
               "character": "<blank>",
-              "time_steps": 89
-            },
-            {
-              "id": 22,
-              "character": "ا",
-              "time_steps": 4
+              "time_steps": 88
             },
             {
               "id": 1,
               "character": " ",
-              "time_steps": 3
+              "time_steps": 7
             },
             {
-              "id": 24,
-              "character": "ت",
-              "time_steps": 2
+              "id": 22,
+              "character": "ا",
+              "time_steps": 3
             },
             {
               "id": 30,
@@ -984,6 +979,11 @@
             {
               "id": 16,
               "character": ":",
+              "time_steps": 1
+            },
+            {
+              "id": 51,
+              "character": "۰",
               "time_steps": 1
             }
           ]
