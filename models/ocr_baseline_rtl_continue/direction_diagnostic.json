@@ -1,0 +1,41 @@
+{
+  "checkpoint": "F:\\mohsenproject\\ShafieeDocAI\\models\\ocr_baseline_rtl_continue\\best.pt",
+  "checkpoint_epoch": 10,
+  "method": "Compare current CTC loss for normal and reversed character targets on Persian letter-only samples.",
+  "results": {
+    "train": {
+      "available_lines": 1105,
+      "tested_lines": 1,
+      "normal_target_wins": 1,
+      "reversed_target_wins": 0,
+      "ties": 0,
+      "examples": [
+        {
+          "dataset_index": 678,
+          "reference": "فاکتور فروش",
+          "prediction": "فایتارا تر:",
+          "normal_target_ctc_loss_per_char": 1.85698,
+          "reversed_target_ctc_loss_per_char": 3.78689,
+          "preferred_target_order": "NORMAL"
+        }
+      ]
+    },
+    "validation": {
+      "available_lines": 142,
+      "tested_lines": 1,
+      "normal_target_wins": 1,
+      "reversed_target_wins": 0,
+      "ties": 0,
+      "examples": [
+        {
+          "dataset_index": 113,
+          "reference": "فاکتور فروش",
+          "prediction": "فایتارا تر:",
+          "normal_target_ctc_loss_per_char": 1.85698,
+          "reversed_target_ctc_loss_per_char": 3.78689,
+          "preferred_target_order": "NORMAL"
+        }
+      ]
+    }
+  }
+}

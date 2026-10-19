@@ -1,0 +1,994 @@
+{
+  "checkpoint": "F:\\mohsenproject\\ShafieeDocAI\\models\\ocr_baseline_rtl_continue\\best.pt",
+  "checkpoint_epoch": 10,
+  "results": {
+    "train": {
+      "available_lines": 1105,
+      "tested_lines": 8,
+      "examples": [
+        {
+          "sample_id": "T01",
+          "split": "train",
+          "dataset_index": 848,
+          "document_id": "INV-000078",
+          "annotation_id": "text-0012",
+          "bbox": [
+            570,
+            635,
+            905,
+            661
+          ],
+          "image_width": 364,
+          "reference": "جمع کالاها: ۱۸,۶۷۰,۰۰۰ تومان",
+          "prediction": "فایتارا تر:۰",
+          "input_length": 91,
+          "blank_fraction": 0.8571,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 78
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "T02",
+          "split": "train",
+          "dataset_index": 927,
+          "document_id": "INV-000086",
+          "annotation_id": "text-0008",
+          "bbox": [
+            600,
+            407,
+            905,
+            426
+          ],
+          "image_width": 432,
+          "reference": "فلش مموری | ۵ | ۶۵۰,۰۰۰ | ۳,۲۵۰,۰۰۰",
+          "prediction": "فایتارا تر:  ۰",
+          "input_length": 108,
+          "blank_fraction": 0.8611,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 93
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 3
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "T03",
+          "split": "train",
+          "dataset_index": 1027,
+          "document_id": "INV-000095",
+          "annotation_id": "text-0011",
+          "bbox": [
+            617,
+            671,
+            930,
+            696
+          ],
+          "image_width": 352,
+          "reference": "جمع کالاها: ۳۲,۸۰۰,۰۰۰ تومان",
+          "prediction": "فایتارا تر:۰",
+          "input_length": 88,
+          "blank_fraction": 0.8523,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 75
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "T04",
+          "split": "train",
+          "dataset_index": 226,
+          "document_id": "INV-000023",
+          "annotation_id": "text-0008",
+          "bbox": [
+            699,
+            462,
+            930,
+            478
+          ],
+          "image_width": 376,
+          "reference": "شارژر | ۱ | ۹۵۰,۰۰۰ | ۹۵۰,۰۰۰",
+          "prediction": "فایتارا تر:۰",
+          "input_length": 94,
+          "blank_fraction": 0.8617,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 81
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "T05",
+          "split": "train",
+          "dataset_index": 231,
+          "document_id": "INV-000023",
+          "annotation_id": "text-0013",
+          "bbox": [
+            697,
+            688,
+            930,
+            709
+          ],
+          "image_width": 304,
+          "reference": "مالیات: ۱,۵۳۰,۰۰۰ تومان",
+          "prediction": "فایتارا تر:۰",
+          "input_length": 76,
+          "blank_fraction": 0.8289,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 63
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "T06",
+          "split": "train",
+          "dataset_index": 37,
+          "document_id": "INV-000005",
+          "annotation_id": "text-0010",
+          "bbox": [
+            646,
+            600,
+            930,
+            617
+          ],
+          "image_width": 440,
+          "reference": "صفحه کلید | ۲ | ۸۵۰,۰۰۰ | ۱,۷۰۰,۰۰۰",
+          "prediction": "فایتارا تر:  ۰",
+          "input_length": 110,
+          "blank_fraction": 0.8636,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 95
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 3
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "T07",
+          "split": "train",
+          "dataset_index": 830,
+          "document_id": "INV-000077",
+          "annotation_id": "text-0006",
+          "bbox": [
+            565,
+            309,
+            930,
+            334
+          ],
+          "image_width": 408,
+          "reference": "شرح کالا | تعداد | قیمت واحد | مبلغ",
+          "prediction": "فایتارا تر: ۰",
+          "input_length": 102,
+          "blank_fraction": 0.8627,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 88
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "T08",
+          "split": "train",
+          "dataset_index": 374,
+          "document_id": "INV-000036",
+          "annotation_id": "text-0003",
+          "bbox": [
+            668,
+            186,
+            905,
+            208
+          ],
+          "image_width": 300,
+          "reference": "تاریخ فاکتور: ۱۴۰۵/۰۲/۲۵",
+          "prediction": "فایتارا تر:۰",
+          "input_length": 75,
+          "blank_fraction": 0.8267,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 62
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        }
+      ]
+    },
+    "validation": {
+      "available_lines": 142,
+      "tested_lines": 8,
+      "examples": [
+        {
+          "sample_id": "V01",
+          "split": "validation",
+          "dataset_index": 52,
+          "document_id": "INV-000031",
+          "annotation_id": "text-0013",
+          "bbox": [
+            727,
+            571,
+            930,
+            591
+          ],
+          "image_width": 276,
+          "reference": "مالیات: ۱,۷۰۷,۰۰۰ تومان",
+          "prediction": "فایتارا تر: ۰",
+          "input_length": 69,
+          "blank_fraction": 0.7971,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 55
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "V02",
+          "split": "validation",
+          "dataset_index": 133,
+          "document_id": "INV-000091",
+          "annotation_id": "text-0006",
+          "bbox": [
+            565,
+            288,
+            930,
+            313
+          ],
+          "image_width": 408,
+          "reference": "شرح کالا | تعداد | قیمت واحد | مبلغ",
+          "prediction": "فایتارا تر: ۰",
+          "input_length": 102,
+          "blank_fraction": 0.8627,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 88
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "V03",
+          "split": "validation",
+          "dataset_index": 3,
+          "document_id": "INV-000001",
+          "annotation_id": "text-0004",
+          "bbox": [
+            680,
+            196,
+            930,
+            219
+          ],
+          "image_width": 304,
+          "reference": "فروشنده: فروشگاه رایانه پارس",
+          "prediction": "فایتارا تر:۰",
+          "input_length": 76,
+          "blank_fraction": 0.8289,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 63
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "V04",
+          "split": "validation",
+          "dataset_index": 33,
+          "document_id": "INV-000021",
+          "annotation_id": "text-0009",
+          "bbox": [
+            646,
+            412,
+            930,
+            429
+          ],
+          "image_width": 440,
+          "reference": "صفحه کلید | ۲ | ۸۵۰,۰۰۰ | ۱,۷۰۰,۰۰۰",
+          "prediction": "فایتارا تر:  ۰",
+          "input_length": 110,
+          "blank_fraction": 0.8636,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 95
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 3
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "V05",
+          "split": "validation",
+          "dataset_index": 117,
+          "document_id": "INV-000081",
+          "annotation_id": "text-0005",
+          "bbox": [
+            749,
+            235,
+            930,
+            258
+          ],
+          "image_width": 220,
+          "reference": "خریدار: بازرگانی نمونه",
+          "prediction": "فایتارا تر:۰۰۰",
+          "input_length": 55,
+          "blank_fraction": 0.6909,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 38
+            },
+            {
+              "id": 51,
+              "character": "۰",
+              "time_steps": 5
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "V06",
+          "split": "validation",
+          "dataset_index": 136,
+          "document_id": "INV-000091",
+          "annotation_id": "text-0009",
+          "bbox": [
+            684,
+            411,
+            930,
+            427
+          ],
+          "image_width": 400,
+          "reference": "شارژر | ۴ | ۹۵۰,۰۰۰ | ۳,۸۰۰,۰۰۰",
+          "prediction": "فایتارا تر: ۰",
+          "input_length": 100,
+          "blank_fraction": 0.86,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 86
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "V07",
+          "split": "validation",
+          "dataset_index": 11,
+          "document_id": "INV-000001",
+          "annotation_id": "text-0012",
+          "bbox": [
+            633,
+            538,
+            930,
+            562
+          ],
+          "image_width": 344,
+          "reference": "مبلغ نهایی: ۴,۶۷۵,۰۰۰ تومان",
+          "prediction": "فایتارا تر:۰",
+          "input_length": 86,
+          "blank_fraction": 0.8488,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 73
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        },
+        {
+          "sample_id": "V08",
+          "split": "validation",
+          "dataset_index": 32,
+          "document_id": "INV-000021",
+          "annotation_id": "text-0008",
+          "bbox": [
+            661,
+            378,
+            930,
+            395
+          ],
+          "image_width": 416,
+          "reference": "موس رایانه | ۱ | ۴۲۰,۰۰۰ | ۴۲۰,۰۰۰",
+          "prediction": "فایتارا تر:  ۰",
+          "input_length": 104,
+          "blank_fraction": 0.8558,
+          "unique_raw_classes": 9,
+          "top_raw_classes": [
+            {
+              "id": 0,
+              "character": "<blank>",
+              "time_steps": 89
+            },
+            {
+              "id": 22,
+              "character": "ا",
+              "time_steps": 4
+            },
+            {
+              "id": 1,
+              "character": " ",
+              "time_steps": 3
+            },
+            {
+              "id": 24,
+              "character": "ت",
+              "time_steps": 2
+            },
+            {
+              "id": 30,
+              "character": "ر",
+              "time_steps": 2
+            },
+            {
+              "id": 38,
+              "character": "ف",
+              "time_steps": 1
+            },
+            {
+              "id": 50,
+              "character": "ی",
+              "time_steps": 1
+            },
+            {
+              "id": 16,
+              "character": ":",
+              "time_steps": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
